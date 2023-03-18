@@ -11,12 +11,13 @@ namespace School.Areas.Student.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public DateTime Dob { get; set; }
-        public DateTime JoinDate { get; set; }
-        public decimal Salary { get; set; }
-        public int No { get; set; }
+        public string Email { get; set; }
+        public int Score { get; set; }
+        public int ClassId { get; set; }
+        public DateTime Create { get; set; }
+        public DateTime Update { get; set; }
         // đứng từ employee lấy danh sách từ departments (optional)
-        public virtual Departments? Departments { get; set; }
+        /*public virtual Class? Class { get; set; }
+        public virtual Teachers Teachers {*/
     }
 }
