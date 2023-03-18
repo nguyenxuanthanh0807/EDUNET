@@ -15,7 +15,6 @@
     <Folder Include="Areas\Class\Models\" />
     <Folder Include="Areas\Class\Views\" />
     <Folder Include="Areas\Student\Data\" />
-    <Folder Include="Areas\Student\Models\" />
     <Folder Include="Areas\Student\Views\" />
     <Folder Include="Areas\Subject\Controllers\" />
     <Folder Include="Areas\Subject\Data\" />
