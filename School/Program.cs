@@ -1,7 +1,22 @@
+
+using Microsoft.EntityFrameworkCore;
+using School.Models;
+//using School.Repositories;
+//using School.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration
+        .GetConnectionString("ConnectDB"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
+
+//builder.Services.AddScoped<ISubjectRepository, SubjectServiceImp>();
 
 var app = builder.Build();
 

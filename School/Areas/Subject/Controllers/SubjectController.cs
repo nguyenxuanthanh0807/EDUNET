@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace School.Areas.Class.Controllers
+namespace School.Areas.Subject.Controllers
 {
-    public class ClassController : Controller
+    public class SubjectController : Controller
     {
         public IActionResult Index()
         {
-            
             return View();
         }
     }
