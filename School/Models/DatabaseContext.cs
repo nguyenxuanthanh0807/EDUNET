@@ -5,6 +5,7 @@ using School.Areas.Teacher.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using DEMO.Areas.Student.Models;
 
 namespace School.Models
 {
@@ -37,8 +38,8 @@ namespace School.Models
    
 
             modelBuilder.Entity<StudentModel>()
-                .HasOne(o => o.Class)
-                .WithMany(c => c.Students)
+                .HasOne(o => o.Class_Id)
+                .WithMany(c => c.Student)
                 .HasForeignKey(o => o.Class_Id);
         }
         public DbSet<StudentModel> Students { get; set; }

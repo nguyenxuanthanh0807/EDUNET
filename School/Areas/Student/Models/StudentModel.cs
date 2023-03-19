@@ -1,4 +1,5 @@
-﻿using DEMO.Areas.Class.Models;
+﻿using DEMO.Areas.Student.Models;
+using School.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,7 +17,7 @@ namespace DEMO.Areas.Student.Models
         [Range(1,10,ErrorMessage = "score must be 1 to 10")]
         public int Score { get; set; }
         public string Class_Id { get; set; }
-        public virtual ClassModel Class { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
 
     }
 }
