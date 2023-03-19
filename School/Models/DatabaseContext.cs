@@ -5,7 +5,7 @@ using School.Areas.Teacher.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using DEMO.Areas.Student.Models;
+
 
 namespace School.Models
 {
