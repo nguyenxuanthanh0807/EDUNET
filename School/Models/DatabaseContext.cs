@@ -1,11 +1,12 @@
-﻿using School.Areas.Class.Models;
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.EntityFrameworkCore;
+using School.Areas.Class.Models;
 using School.Areas.Student.Models;
 using School.Areas.Subject.Models;
 using School.Areas.Teacher.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using DEMO.Areas.Student.Models;
 
 namespace School.Models
 {
@@ -33,14 +34,14 @@ namespace School.Models
                     .HasForeignKey(p => p.Teacher_Id);
 
                 });
-               
 
-   
+
+
 
             modelBuilder.Entity<StudentModel>()
-                .HasOne(o => o.Class_Id)
-                .WithMany(c => c.Student)
-                .HasForeignKey(o => o.Class_Id);
+                 .HasOne(o => o.Class)
+                 .WithMany(c => c.Students)
+                 .HasForeignKey(o => o.Class_Id);
         }
         public DbSet<StudentModel> Students { get; set; }
         public DbSet<SubjectModel> Subjects { get; set; }
