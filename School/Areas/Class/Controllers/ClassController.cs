@@ -6,7 +6,7 @@ namespace School.Areas.Class.Controllers
     {
         public IActionResult Index()
         {
-            // Duong khai Cuong
+            
             return View();
         }
     }

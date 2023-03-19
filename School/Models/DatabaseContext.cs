@@ -1,44 +1,50 @@
-﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
-using Microsoft.EntityFrameworkCore;
+﻿using School.Areas.Class.Models;
+using School.Areas.Student.Models;
 using School.Areas.Subject.Models;
+using School.Areas.Teacher.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace School.Models
 {
-    public class DatabaseContext: DbContext
+    public class DatabaseContext : DbContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
+        public DatabaseContext(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Course>()
-                .HasKey(c => new { c.SubjectId, c.TeacherId, c.ClassId });
 
-            modelBuilder.Entity<Course>()
-                .HasOne(ci => ci.Subject)
-                .WithMany(c => c.Courses)
-                .HasForeignKey(ci => ci.SubjectId);
 
             //modelBuilder.Entity<Course>()
-            //    .HasOne(ai => ai.Teacher)
-            //    .WithMany(a => a.Courses)
-            //    .HasForeignKey(ai => ai.TeacherId);
+            //.HasKey(oi => new { oi.Class_Id, oi.Subject_Id, oi.Teacher_Id });
 
-            //modelBuilder.Entity<Course>()
-            //    .HasOne(bi => bi.Class)
-            //    .WithMany(b => b.Course)
-            //    .HasForeignKey(c => c.ClassId);  
-            
-            //modelBuilder.Entity<Class>()
-            //    .HasOne(ci => ci.Student)
-            //    .WithMany(c => c.Class) 
-            //    .HasForeignKey(o => o.StudentId);
-                
+            modelBuilder.Entity<Course>(entity => 
+            {
+                    entity.HasOne(oi => oi.Class).WithMany(o => o.Courses)
+                    .HasForeignKey(oi => oi.Class_Id);
+                 
+                    entity.HasOne(oi => oi.Subject).WithMany(p => p.Courses)
+                    .HasForeignKey(p => p.Subject_Id);
+
+                   
+                    entity.HasOne(oi => oi.Teacher).WithMany(p => p.Courses)
+                    .HasForeignKey(p => p.Teacher_Id);
+
+                });
+               
+
+   
+
+            modelBuilder.Entity<StudentModel>()
+                .HasOne(o => o.Class)
+                .WithMany(c => c.Students)
+                .HasForeignKey(o => o.Class_Id);
         }
+        public DbSet<StudentModel> Students { get; set; }
+        public DbSet<SubjectModel> Subjects { get; set; }
+        public DbSet<ClassModel> Classes { get; set; }
+        public DbSet<TeacherModel> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
-        //public DbSet<Class> Classes { get; set; }
-        //public DbSet<Student> Students { get; set; }
-        //public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Subject> Subjects { get; set; }
-
     }
 }

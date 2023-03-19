@@ -1,8 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using School.Models;
-using School.Repositories;
-using School.Services;
+//using School.Repositories;
+//using School.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +16,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
-builder.Services.AddScoped<ISubjectRepository, SubjectServiceImp>();
+//builder.Services.AddScoped<ISubjectRepository, SubjectServiceImp>();
 
 var app = builder.Build();
 
