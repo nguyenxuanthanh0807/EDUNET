@@ -1,9 +1,9 @@
-﻿
+﻿using DEMO.Areas.Student.Models;
 using School.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace School.Areas.Student.Models
+namespace DEMO.Areas.Student.Models
 {
     [Table("Student")]
     public class StudentModel
